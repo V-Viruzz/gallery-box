@@ -1,0 +1,38 @@
+.container {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  display: flex;
+  gap: 1rem;
+}
+
+.card {
+  /* background-color: black; */
+  width: 20rem;
+  /* 80px converted to rems for better scalability */
+  border: 1px solid #4a4a4a;
+  /* border-neutral-600 equivalent */
+  border-radius: 1.25rem;
+  /* rounded-2xl equivalent */
+  font-weight: 200;
+  /* font-extralight equivalent */
+  font-size: 1.125rem;
+  /* text-lg equivalent */
+}
+
+.card img {
+  width: 100%;
+}
+
+.roundedTop {
+  border-top-left-radius: 1rem;
+  /* rounded-t-xl equivalent */
+  border-top-right-radius: 1rem;
+  /* rounded-t-xl equivalent */
+}
+
+.title {
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
