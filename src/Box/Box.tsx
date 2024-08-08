@@ -1,26 +1,35 @@
 import "swiper/css";
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 import { createPortal } from 'react-dom';
 import style from './Box.module.css'
-import React, {  FC, HTMLAttributes, MouseEvent, PropsWithChildren, useRef, useState } from 'react'
+import React, { FC, HTMLAttributes, MouseEvent, PropsWithChildren, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 
 export const Box: FC<PropsWithChildren<HTMLAttributes<HTMLDivElement>>> = ({ children, className }) => {
   const lg = useRef<HTMLDivElement>(null)
-  const [previewUrl, setPreviewUrl] = useState<string | null>('')
+  const indexSlideRef = useRef(0)
+  const [isShow, setShow] = useState(false)
 
   const handleImageClick = (event: MouseEvent<HTMLElement>) => {
+    event.preventDefault()
     const target = event.target as HTMLElement
-    const img = target.closest('img')
-    if (img) {
-      setPreviewUrl(img.src)
+    
+    const element = target.closest('div')
+    if (element === null) return
+    
+    const indexSlide = element.getAttribute('data-id');
+    if (indexSlide === null) return
+
+    indexSlideRef.current = parseInt(indexSlide) - 1
+    console.log(indexSlideRef.current)
+    if ( isShow !== true) {
+      setShow(true)
     }
   }
 
-  const closePreview = () => setPreviewUrl(null)
+  const closePreview = () => setShow(false)
 
   if (children === null || children === undefined) {
     console.log('error: children')
@@ -37,15 +46,15 @@ export const Box: FC<PropsWithChildren<HTMLAttributes<HTMLDivElement>>> = ({ chi
     >
       {children}
       {
-        previewUrl && createPortal(
+        isShow && createPortal(
           <Swiper
             // lazy={true}
-            initialSlide={1}
+            initialSlide={indexSlideRef.current}
             pagination={{
               clickable: true,
             }}
             navigation={true}
-            modules={[Navigation, Pagination]}
+            modules={[Pagination]}
             className={style.containerBox}
           >
             <div className={style.bar}>
