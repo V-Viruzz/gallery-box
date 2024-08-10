@@ -1,3 +1,7 @@
+:root {
+  --swiper-pagination-bullet-inactive-color: white;
+}
+
 .containerBox {
   color: white;
   width: 100vw;
@@ -5,18 +9,13 @@
   top: 0;
   left: 0;
   position: absolute !important;
-  background-color: rgb(22, 22, 22);
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.containerBox a {
-  width: 100%;
-  height: 100%;
-}
-
-.bar {
+.toolbar {
   background-color: black;
   position: absolute;
   width: 100%;
@@ -25,32 +24,49 @@
   top: 0;
   left: 0;
   display: flex;
+  flex-direction: row-reverse;
   gap: 10px;
 }
 
-.bar button {
-  border: solid 2px rgb(95, 95, 95);
+.toolbar button {
+  background-color: transparent;
+  border: none;
   border-radius: 22px;
-  padding: 15px;
+  padding: 13px;
+  color: white;
 }
 
-.containerBox .containerImage img {
-  /* width: 500px; */
-  /* object-fit: initial; */
-
-  object-fit: contain;
-  height: 500px;
-  border-radius: 20px;
-}
-
-.containerBox .containerImage {
+.containerBox .containerLayout {
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  gap: 20px;
-  font-size: 1.6rem;
-  font-weight: 200;
+}
+
+.barPaginationLayout {
+  width: 100%;
+  flex-basis: 50px;
+}
+
+.toolbarLayout {
+  width: 100%;
+  flex-basis: 50px;
+}
+
+.containerImagePreview {
+  height: 90vh;
+  max-height: 90vh;
+  width:  100vw;
+  position: absolute;
+  top: 55px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.containerBox .containerLayout img {
+  width: 100vw;
+  /* min-height: auto ; */
+  object-fit: scale-down;
+  border-radius: 20px;
 }

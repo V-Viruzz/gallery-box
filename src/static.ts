@@ -1,14 +1,15 @@
-import img1 from './assets/animal-crossing-new-horizons.jpg'
+import img1 from './assets/zelda-botw.webp'
 import img2 from './assets/pokemon-shield.webp'
 import img3 from './assets/super-mario-maker.webp'
-import img4 from './assets/zelda-botw.webp'
+import img4 from './assets/animal-crossing-new-horizons.jpg'
 
 export const list = [
   {
     id: 1,
-    title: 'Animal Crossing: New Horizons',
+    title: 'The Legend of Zelda',
     img: img1,
-    description: 'This is a popular gaming franchise that features a variety of unique and exciting locations, creatures, and items.'
+    description: 'the legend of zelda is the most powerful character in the game series that exists'
+    
   },
   {
     id: 2,
@@ -24,9 +25,9 @@ export const list = [
   },
   {
     id: 4,
-    title: 'The Legend of Zelda',
+    title: 'Animal Crossing: New Horizons',
     img: img4,
-    description: 'the legend of zelda is the most powerful character in the game series that exists'
+    description: 'This is a popular gaming franchise that features a variety of unique and exciting locations, creatures, and items.'
   }
 ]
 // export const list = [

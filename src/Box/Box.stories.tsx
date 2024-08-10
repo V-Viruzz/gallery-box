@@ -18,7 +18,8 @@ export const Primary: Story = {
     className: style.container,
     children: list.map(item => (
       <div
-        data-id={`${item.id}`}
+        data-url={`${item.img}`}
+        data-name={`${item.title}`}
         key={item.id}
         className={style.card}
       >

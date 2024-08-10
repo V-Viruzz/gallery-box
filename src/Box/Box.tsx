@@ -6,25 +6,35 @@ import style from './Box.module.css'
 import React, { FC, HTMLAttributes, MouseEvent, PropsWithChildren, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from 'swiper/modules';
+import CloseIcon from "../Icons/CloseIcon";
 
 export const Box: FC<PropsWithChildren<HTMLAttributes<HTMLDivElement>>> = ({ children, className }) => {
-  const lg = useRef<HTMLDivElement>(null)
-  const indexSlideRef = useRef(0)
+  const childrenArray = React.Children.toArray(children);
   const [isShow, setShow] = useState(false)
+  const indexSlideRef = useRef(0)
+  const lg = useRef<HTMLDivElement>(null)
 
   const handleImageClick = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault()
     const target = event.target as HTMLElement
-    
+
     const element = target.closest('div')
     if (element === null) return
-    
-    const indexSlide = element.getAttribute('data-id');
+
+    const indexSlide = element.getAttribute('data-url');
     if (indexSlide === null) return
 
-    indexSlideRef.current = parseInt(indexSlide) - 1
-    console.log(indexSlideRef.current)
-    if ( isShow !== true) {
+    const resultIndex = childrenArray.findIndex(item => {
+      if (!React.isValidElement(item)) {
+        console.log('error: item is not a valid React element')
+        return null
+      }
+      return item.props['data-url'] === indexSlide
+    })
+
+    indexSlideRef.current = resultIndex
+
+    if (isShow !== true) {
       setShow(true)
     }
   }
@@ -35,8 +45,6 @@ export const Box: FC<PropsWithChildren<HTMLAttributes<HTMLDivElement>>> = ({ chi
     console.log('error: children')
     return
   }
-
-  const childrenArray = React.Children.toArray(children);
 
   return (
     <div
@@ -49,17 +57,18 @@ export const Box: FC<PropsWithChildren<HTMLAttributes<HTMLDivElement>>> = ({ chi
         isShow && createPortal(
           <Swiper
             // lazy={true}
+            className={style.containerBox}
             initialSlide={indexSlideRef.current}
+            navigation={true}
+            modules={[Pagination]}
             pagination={{
               clickable: true,
             }}
-            navigation={true}
-            modules={[Pagination]}
-            className={style.containerBox}
           >
-            <div className={style.bar}>
-              <button onClick={closePreview}>close</button>
-              <button>lol</button>
+            <div className={style.toolbar}>
+              <button onClick={closePreview}>
+                <CloseIcon />
+              </button>
             </div>
             {
               childrenArray.map(child => {
@@ -68,14 +77,18 @@ export const Box: FC<PropsWithChildren<HTMLAttributes<HTMLDivElement>>> = ({ chi
                   return null
                 }
 
-                const url = child.props.children[0].props.src
-                const name = child.props.children[0].props.alt
+                const url = child.props['data-url']
+                const name = child.props['data-name']
 
                 return (
                   <SwiperSlide key={child.key}>
-                    <div className={style.containerImage}>
-                      <img src={url} alt={name} loading="lazy" />
-                      <p>{name}</p>
+                    <div className={style.containerLayout}>
+                      {/* <div className={style.toolbarLayout}/> */}
+                      <div className={style.containerImagePreview}>
+                        <img src={url} alt={name} />
+                      </div>
+                      {/* <div className={style.barPaginationLayout}/> */}
+                      {/* <p>{name}</p> */}
                     </div>
                   </SwiperSlide>
                 )
