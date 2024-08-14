@@ -2,17 +2,21 @@
   --swiper-pagination-bullet-inactive-color: white;
 }
 
-.containerBox {
-  color: white;
-  width: 100vw;
+.galleryBoxContainer {
+  width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
-  position: absolute !important;
-  background-color: black;
+  z-index: 1000;
+  position: fixed !important;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+}
+
+.containerBox {
+  color: white;
+  width: 100%;
+  background-color: black;
 }
 
 .toolbar {
@@ -43,30 +47,42 @@
   flex-direction: column;
 }
 
-.barPaginationLayout {
-  width: 100%;
-  flex-basis: 50px;
-}
-
-.toolbarLayout {
-  width: 100%;
-  flex-basis: 50px;
-}
-
 .containerImagePreview {
-  height: 90vh;
-  max-height: 90vh;
-  width:  100vw;
+  width: 100vw;
   position: absolute;
   top: 55px;
-
+  bottom: 0px;
   display: flex;
   justify-content: center;
 }
 
+/* Adapted image  */
 .containerBox .containerLayout img {
-  width: 100vw;
-  /* min-height: auto ; */
-  object-fit: scale-down;
-  border-radius: 20px;
+  /* width: 100vw;
+  object-fit: scale-down; */
+}
+
+/* Full screen image */
+.containerBox .containerLayout img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.thumbContainer {
+  background-color: #000000;
+  display: flex;
+  padding: 20px 0;
+}
+
+
+.thumbItemImage {
+  /* border: solid 3px rgb(63, 63, 63);
+  border-radius: 15px;
+   */
+}
+
+.thumbContainer img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }

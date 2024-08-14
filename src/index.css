@@ -1,5 +1,25 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: #242424;
-    /* --swiper-pagination-bullet-inactive-color: red; */
+  /* --swiper-pagination-bullet-inactive-color: red; */
+}
+
+
+.thumb-item {
+  width: 120px !important;
+  height: 90px !important;
+  overflow: hidden;
+  border: solid 2px #434343;
+  border-radius: 8px;
+  opacity: 0.6;
+}
+
+.thumb-item:hover {
+  border: solid 2px #ff0000;
+  transition: border 0.25s ease;
+}
+
+.swiper-slide-thumb-active {
+  border: solid 2px #ff0000;
+  opacity: 1;
 }

@@ -2,6 +2,8 @@ import img1 from './assets/zelda-botw.webp'
 import img2 from './assets/pokemon-shield.webp'
 import img3 from './assets/super-mario-maker.webp'
 import img4 from './assets/animal-crossing-new-horizons.jpg'
+import img5 from './assets/profile.png'
+import img6 from './assets/wallpaperflare.jpg'
 
 export const list = [
   {
@@ -28,6 +30,18 @@ export const list = [
     title: 'Animal Crossing: New Horizons',
     img: img4,
     description: 'This is a popular gaming franchise that features a variety of unique and exciting locations, creatures, and items.'
+  },
+  {
+    id: 5,
+    title: 'Profile',
+    img: img5,
+    description: 'lol'
+  },
+  {
+    id: 6,
+    title: 'Wallpaper',
+    img: img6,
+    description: 'lol2'
   }
 ]
 // export const list = [

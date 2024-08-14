@@ -1,6 +1,6 @@
 {
   "name": "gallery-box",
-  "version": "0.0.1",
+  "version": "0.0.3-alpha",
   "type": "module",
   "files": [
     "dist"
@@ -11,7 +11,8 @@
     ".": {
       "import": "./dist/gallery-box.js",
       "require": "./dist/gallery-box.umd.cjs"
-    }
+    },
+    "./dist/src/Box/Box.module.css": "./src/Box/Box.module.css"
   },
   "scripts": {
     "dev": "vite",
